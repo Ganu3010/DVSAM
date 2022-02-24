@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+
+:root{
+	--theme : rgb(0, 67, 155);
+	--old-color : rgb(0, 117, 196);
+	--background : #0a122e;
+	--greyBackground : rgb(236, 234, 234);
+	--whiteBgHead : #162661;
+	--whiteBgText : rgb(79, 99, 114);
+	--blueBgText : rgb(221, 221, 221);
+	--extraDarkBackground : #030816;
+
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+	scroll-behavior: smooth;
+	outline: none;
+
+}
+
+body, html{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+
+/* Footer Section ------------------------------------------------------------------------------------------- */
+
+.footer{
+	position: relative;
+	bottom: 0;
+	background-color: var(--background);
+	color: var(--blueBgText);
+	font-size: 15px;
+	width: 100%;
+}
+
+.footer h2{
+	color: white;
+	font-size: 35px;
+	line-height: 40px;
+	margin-bottom: 20px;
+}
+
+.footer a{
+	text-decoration: none;	
+	color: rgb(219, 219, 3);
+	transition: all 0.2s ease;
+}
+
+.footer a:hover{
+	color: yellow;
+}
+
+.aboutAndAddress{
+	display: flex;
+	/* align-items: center; */
+	justify-content: space-evenly;
+}
+
+.brandLogo img{
+	flex: 1;
+	margin: 100px 40px;
+	user-select: none;
+	opacity: 1;
+	transition: all 1s ease;
+}
+
+
+.about{
+	flex: 2;
+	margin: 100px 40px;
+}
+
+.about h2{
+	opacity: 1;
+	transition: all 1s ease;
+}
+
+
+.about p{
+	opacity: 1;
+	transition: all 1s ease;
+}
+
+
+.address{
+	flex: 2;
+	margin: 100px 40px;
+}
+
+.address h2{
+	opacity: 1;
+	transition: all 1s ease;
+}
+
+
+.address p{
+	opacity: 1;
+	transition: all 1s ease;
+}
+
+.address .social{
+	display: flex;
+	opacity: 1;
+	transition: all 1s ease;
+	height: 25px;
+}
+
+
+
+.address .social a{
+	height: 25px;
+	width: 25px;
+	margin-right: 25px;
+}
+
+.address .social img{
+	width : 25px;
+	height: 100%;
+	transition: all 0.2s ease;
+	filter: invert(25%);
+	user-select: none;
+}
+
+.address .social img:hover{
+	transform: scale(1.1);
+	filter: invert(0)
+	
+}
+
+.line{
+	height: 0.5px;
+	background-color: grey;
+}
+
+
+.copyright{
+	text-align: center;
+	padding: 20px;
+	overflow: hidden;
+	
+}
+
+.copyright p{
+	opacity: 1;
+	transition: all 1s ease;
+	font-size: 15px;
+}
+
+
+
+/* ---------------------------------------------------------------------------------------------------------- */
+
+
+/* Media queries for responsive display */
+
+@media screen and (max-width : 1024px) {
+	
+	/* Brand logo image */
+
+	.footer{
+		font-size: 15px;
+	}
+
+	.brandLogo img{
+		width: 250px;
+	}
+
+	.copyright{
+		height: 100px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		
+	}
+
+}
+
+
+
+@media screen and (max-width : 768px) {
+	
+    /* Footer Section------------------*/ 
+    /* Brand logo image */
+
+	.footer{
+		font-size: 15px;
+	}
+
+	.brandLogo img{
+		width: 200px;
+		margin-top: 110px;
+	}
+
+	.about{
+		margin: 100px 0;
+	}
+
+	.address{
+		margin: 100px 20px;
+	}
+
+	.copyright{
+		height: 100px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		
+	}
+
+}
+
+
+@media screen and (max-height : 540px) and (orientation : landscape){
+	
+	.footer{
+		display: none;
+	}
+
+}
+
+
+@media only screen and (max-width : 540px) {
+
+	/* footer */
+
+	.footer{
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.aboutAndAddress{
+		flex-direction: column;
+		text-align: center;
+		padding: 30px;
+	}
+
+	.brandLogo img{
+		margin: 25px 0;
+		padding: 0;
+
+	}
+
+	.about{
+		margin: 25px 0;
+		padding: 0;
+	}
+
+	.address{
+		margin: 25px 0;
+		padding: 0;
+	}
+
+	.social{
+		display: flex;
+		justify-content: center;
+	}
+
+	.address .social a{
+		margin: 0 12.5px;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------------- */

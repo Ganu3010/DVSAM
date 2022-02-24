@@ -1,0 +1,1292 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+
+:root{
+	--theme : rgb(0, 67, 155);
+	/* --theme : #152142; */
+	--old-color : rgb(0, 117, 196);
+	--background : #0a122e;
+	--greyBackground : rgb(236, 234, 234);
+	/* --whiteBgText : rgb(104, 104, 104); */
+	--whiteBgHead : #162661;
+	--whiteBgText : rgb(79, 99, 114);
+	--blueBgText : rgb(221, 221, 221);
+	--dropDownBg : rgb(247, 247, 247);
+	--extraDarkBackground : #030816;
+
+}
+
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins', sans-serif;
+	scroll-behavior: smooth;
+	outline: none;
+}
+
+
+html, body{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}
+
+/* Scrollbar css -------------------------------------------------------------------------------------------- */
+
+::-webkit-scrollbar {
+	width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+	background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+	background: var(--theme);
+	border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+	background: #555;
+  }
+
+/* ----------------------------------------------------------------------------------------------------------- */
+
+
+header{
+	/* overflow: hidden; */
+	box-sizing: border-box;
+}
+
+#navbar{
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	background-color: white;
+	padding: 15px 0;
+	justify-content: space-between;
+	user-select: none;
+	z-index: 10;
+	height: 70px;
+	transition: all 0.5s ease;
+	width: inherit;
+	/* overflow-x: hidden; */
+	box-shadow: 0 3px 1rem rgba(0,0,0, 0.1);
+	
+}
+
+#navbar a{
+	color: var(--theme);
+}
+
+#logo{
+	/* background-color: pink; */
+	width: 15%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+}
+
+#logo a{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	text-decoration: none;
+}
+
+
+#logoImg{
+	width: 80px;
+	/* filter: invert(55%) grayscale(100%) contrast(10); */
+}
+
+#logoText{
+	margin-left: 23px;
+	width: 80%;
+	text-align: center;
+	/* margin-left: 20px; */
+	/* background-color:yellow; */
+	font-size: 18px;
+	font-weight: 700;
+	text-transform: uppercase;
+	line-height: 25px;
+	
+}
+
+#menu{
+	width: auto;
+}
+
+
+#menu ul {
+	display: flex;
+	align-items: center;
+	font-size: 13px;
+	list-style: none;
+	margin: auto 20px;
+}
+
+#menu .current{
+	color: var(--theme);
+}
+
+#menu .current:after{
+	content: "";
+	width: 100%;
+	background-color: var(--theme);
+}
+
+.scrolling-active #menu .current{
+	color: var(--theme);
+}
+
+
+#menu ul li{
+	display: flex;
+	align-items: center;
+	height: 70px;
+	transition: all 0.3s ease;
+}
+
+#menu a{
+	position: relative;
+	text-decoration: none;
+	margin : auto 10px;
+	transition: all 0.3s ease;
+	color: black;
+	cursor: pointer;
+}
+
+
+
+#menu a:hover{
+	color: var(--theme)
+}
+
+#menu a:after{
+	content: "";
+	position: absolute;
+	background-color:var(--theme);
+	height: 3px;
+	width: 0;
+	left: 0;
+	bottom : -15px;
+	transition: 0.3s;
+}
+
+#menu a:hover:after{
+	width: 100%;
+}
+
+
+.scrolling-active{
+	background-color: #fff;
+	box-shadow: 0 3px 1rem rgba(0,0,0, 0.1);
+}
+
+.scrolling-active #navbar{
+	height: 100px;
+}
+
+.scrolling-active #logo img{
+	filter: invert(55%) grayscale(100%) contrast(10);
+  	/* -webkit-filter: invert(100%); */
+}
+
+.scrolling-active #logoText{
+	color: var(--theme);
+}
+
+.scrolling-active #menu a{
+	color: black;
+	transition: all 0.3s ease;
+}
+.scrolling-active #menu a:hover{
+	color: var(--theme);
+}
+.scrolling-active #menu a:after{
+	background-color: var(--theme);
+}
+
+
+/* Drop down styling ---------------------------------------------------------------------------------------- */
+
+
+	/* General dropdown css */
+		.scrolling-active #menu ul li:hover .sub-menu {
+			background-color: var(--dropDownBg);
+			
+		}
+
+
+		#menu ul li:hover .sub-menu {
+			background-color: var(--dropDownBg);
+		}
+
+		#menu ul li:hover .sub-menu ul li{
+			margin: -5px 0;
+			width: 100%;
+		}
+
+
+		#menu ul li:hover .sub-menu ul{
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			color: white;
+		}
+
+
+	/* ---------- */
+	
+	/* Sub menu 0 */
+	.sub-menu-0{
+		display: none;
+	}
+
+	.home-nav:hover .sub-menu-0{
+		display: block;
+		position: absolute;
+		margin-top: 130px;
+		margin-left: 10px;
+	}
+
+	/* ---------- */
+
+	/* Sub menu 1 */
+	.sub-menu-1{
+		display: none;
+	}
+
+	#menu ul li:hover .sub-menu-1{
+		display: block;
+		position: absolute;
+		margin-top: 190px;
+		margin-left: 10px;
+	}
+
+
+	/* Sub menu - 2 */
+	.sub-menu-2{
+		display: none;
+	}
+
+	#menu ul li:hover .sub-menu-2{
+		display: block;
+		position: absolute;
+		margin-top: 190px;
+		margin-left: 10px;
+		width: 250px;
+	}
+
+	/* PV Modules Drop */
+		.sub-menu-2-1{
+			display: none;
+		}
+
+		.pvModules:hover .sub-menu-2-1{
+			display: block;
+			position: absolute;
+			width: 120%;
+			margin-top: 300px;
+			margin-left: 200px;
+			padding-left: 20px;
+		}
+
+
+			/* poly Crystaline */
+				.sub-menu-2-1-1{
+					display: none;
+				}
+
+				.polyCrystaline:hover .sub-menu-2-1-1{
+					display: block;
+					position: absolute;
+					width: 70%;
+					margin-top: 120px;
+					margin-left: 220px;
+					padding-left: 40px;
+				}
+			
+			/* Mono Perc */
+				.sub-menu-2-1-2{
+					display: none;
+				}
+
+				.monoPerc:hover .sub-menu-2-1-2{
+					display: block;
+					position: absolute;
+					width: 70%;
+					margin-top: 120px;
+					margin-left: 220px;
+					padding-left: 40px;
+				}
+
+			/* Bifacial Perc */
+			.sub-menu-2-1-3{
+				display: none;
+			}
+
+			.bifacial:hover .sub-menu-2-1-3{
+				display: block;
+				position: absolute;
+				width: 70%;
+				margin-top: 60px;
+				margin-left: 220px;
+				padding-left: 40px;
+			}
+
+			/* DCR  */
+			.sub-menu-2-1-4{
+				display: none;
+			}
+
+			.dcr:hover .sub-menu-2-1-4{
+				display: block;
+				position: absolute;
+				width: 70%;
+				margin-top: 60px;
+				margin-left: 220px;
+				padding-left: 40px;
+			}
+	
+	/* Solar Home Lightening */
+		.sub-menu-2-2{
+			display: none;
+		}
+
+		.solarHomeLightening:hover .sub-menu-2-2{
+			display: block;
+			position: absolute;
+			width: 120%;
+			margin-top: 300px;
+			margin-left: 200px;
+			padding-left: 20px;
+		}
+
+
+		/* Traffic Signal */
+			.sub-menu-2-2-1{
+				display: none;
+			}
+
+			.trafficSignal:hover .sub-menu-2-2-1{
+				display: block;
+				position: absolute;
+				width: 70%;
+				margin-top: 60px;
+				margin-left: 220px;
+				padding-left: 30px;
+			}
+
+
+
+	/* Sub menu - 3 */
+	.sub-menu-3{
+		display: none;
+	}
+
+	#menu ul li:hover .sub-menu-3{
+		display: block;
+		position: absolute;
+		margin-top: 430px;
+		margin-left: 10px;
+		width: 300px;
+	}
+
+
+	/* Products Below 20KW */
+		.sub-menu-3-1{
+			display: none;
+		}
+
+		.productBelow20Kw:hover .sub-menu-3-1{
+			display: block;
+			position: absolute;
+			margin-top: 60px;
+			margin-left: 250px;
+			width: 300px;
+			padding-left: 20px;
+		}
+
+	/* Products Above 20KW */
+		.sub-menu-3-2{
+			display: none;
+		}
+
+		.productAbove20Kw:hover .sub-menu-3-2{
+			display: block;
+			position: absolute;
+			margin-top: 60px;
+			margin-left: 250px;
+			width: 300px;
+			padding-left: 20px;
+		}
+
+	/* O and M */
+		.sub-menu-3-3{
+			display: none;
+		}
+
+		.oAndM:hover .sub-menu-3-3{
+			display: block;
+			position: absolute;
+			margin-top: 60px;
+			margin-left: 250px;
+			width: 150px;
+			padding-left: 20px;
+		}
+
+
+		/* AMC Drop */
+		.sub-menu-3-3-1{
+			display: none;
+		}
+
+		.amc:hover .sub-menu-3-3-1{
+			display: block;
+			position: absolute;
+			margin-top: 60px;
+			margin-left: 80px;
+			width: 250px;
+			padding-left: 20px;
+			text-align: center;
+		}
+	
+	/* Sub menu - 4 */
+	.sub-menu-4{
+		display: none;
+	}
+
+	.downloads-nav:hover .sub-menu-4{
+		display: block;
+		position: absolute;
+		margin-top: 250px;
+		margin-left: 10px;
+	}
+
+
+	/* Sub menu - 5 */
+	.sub-menu-5{
+		display: none;
+	}
+
+	.achievements-nav:hover .sub-menu-5{
+		display: block;
+		position: absolute;
+		margin-top: 250px;
+		margin-left: 10px;
+		width: 200px;
+	}
+
+
+	/* Hamburger ------------------------------------------------ */
+
+	.hamburger{
+		width: 30px;
+		height:35px;
+		margin-right: 15px;
+		display: none;
+	}
+
+	/* ---------------------------------------------------------- */
+
+
+	.dropdown-menu{
+		display: none;
+	}
+
+
+	.msg{
+		display: none;
+	}
+		
+/* --------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+/* Responsive media queries  for navbar*/
+
+@media screen and (max-width : 1024px) {
+	
+	#navbar{
+		width: 100%;
+		height: 100px;
+		/* background-color: black; */
+		justify-content: space-between;
+		overflow: hidden;
+	}
+
+	#logo{
+		height: 100%;
+		width: 60%;
+		/* justify-content: flex-start; */
+	}
+
+	#logo a{
+		display: flex;
+		justify-content: center;
+	}
+
+	#logoImg{
+		width: 200px;
+	}
+
+	#logoText{
+		font-size: 30px;
+		line-height: 35px;
+	}
+
+	#menu{
+		display: none;
+	}
+
+	/* Arrow Down */
+
+	.arrow {
+		border: solid black;
+		border-width: 0 3px 3px 0;
+		display: inline-block;
+		padding: 3px;
+		width: 12px;
+		height: 12px;
+	}
+
+	.down {
+		transform: rotate(45deg);
+		/* -webkit-transform: rotate(45deg); */
+	}
+	/* --------- */
+
+	.hamburger{
+		width: 50px;
+		height:50px;
+		/* border: 1px solid black; */
+		margin-right: 45px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+
+	}
+
+	.hamburger-line{
+		width: 50px;
+		height: 6px;
+		background-color: black;
+		border-radius: 10px;
+		transition: all 0.3s ease-in-out;
+	}
+
+	.hamburger-line::after,
+	.hamburger-line::before{
+		content: "";
+		position: absolute;
+		width: 50px;
+		height: 6px;
+		background-color: black;
+		border-radius: 10px;
+		transition: all 0.3s ease-in-out;
+	}
+
+	.hamburger-line::after{
+		transform: translateY(15px);
+	}
+
+	.hamburger-line::before{
+		transform: translateY(-15px);
+	}
+
+	.hamburger.open .hamburger-line{
+		transform: translateX(-50px);
+		background: transparent;
+		box-shadow: none;
+	}
+
+	.hamburger.open .hamburger-line::before{
+		transform: rotate(45deg) translate(35px, -35px);
+	}
+	.hamburger.open .hamburger-line::after{
+		transform: rotate(-45deg) translate(35px, 35px);
+	}
+	
+
+	.dropdown-menu{
+		transform: translateY(-800vh);
+		transition: all 0.3s ease;
+		position: fixed;
+		top: 0px;
+		left: 0;
+		/* right: 0; */
+		display: block;
+		background-color: var(--greyBackground);
+		width: 100%;
+		z-index: 9;
+		overflow-y: scroll;
+		font-size: 30px;
+		text-align: center;
+		height: calc(100vh);
+		padding-top: 200px;
+	}
+
+	.dropdown-menu a{
+		text-decoration: none;
+		color: black;
+		/* margin: 20px 0; */
+	}
+
+	.dropdown-menu li{
+		padding: 20px 0;
+		list-style: none;
+		/* margin: 20px 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center; */
+
+	}
+
+	.dropdown-menu.open{
+		transform: translateY(0);
+	}
+
+
+	.dropdown-menu ul li{
+		width: 100%;
+			
+	}
+
+	.dropdown-menu ul li p{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.dropdown-menu ul li p a{
+		margin-right: 20px;
+	}
+
+	.dropdown-menu ul li ul{
+		position: relative;
+		width: 100%;
+	}
+
+	.sub-menu-drop{
+		position: relative;
+		/* bottom: 0; */
+		background: var(--background);
+		/* background-color: grey; */
+	}
+
+	.sub-menu-drop a{
+		font-weight: 100;
+	}
+
+	.sub-menu2-drop{
+		position: relative;
+		/* bottom: 0; */
+		background: var(--extraDarkBackground);
+		margin-top: 10px;
+		/* background-color: grey; */
+	}
+
+	.sub-menu2-drop a{
+		font-weight: 100;
+	}
+
+	.sub-menu3-drop{
+		position: relative;
+		/* bottom: 0; */
+		background: black;
+		margin-top: 10px;
+		/* background-color: grey; */
+	}
+
+	.sub-menu3-drop a{
+		font-weight: 100;
+	}
+
+	.dropdown-menu ul li ul li a{
+		color: white;
+	}
+
+	.dropdown-menu ul li ul li ul{
+		width: 100%;
+		left: 0;
+	}
+
+
+
+	/* Home Drop --------------------------------------------------------------------------- */
+	.home-menu{
+		display: none;
+	}
+
+	.home-menu.open{
+		display: block;
+	}
+	/* ------------------------------------------------------------------------------------- */
+
+	/* About Us Drop Down Menu-------------------------------------------------------------- */
+
+	.aboutUs-menu {
+		display: none;
+	}
+
+	.aboutUs-menu.open{
+		display: block;
+	}
+
+	.aboutUs-drop{
+		position: relative;
+		
+	}
+
+	.aboutUs-drop.open ~ p a{
+		transition: all 0.3s ease;
+		font-weight: 600;
+		/* font-size: 32px; */
+		color: var(--theme);
+	}
+
+
+
+	/* -------------------------------------------------------------------------------------------- */
+
+
+	/* Products Drop Down Menu-------------------------------------------------------------- */
+
+	.products-menu {
+		display: none;
+	}
+
+	.products-menu.open{
+		display: block;
+		background: var(--background);
+	}
+
+	.products-drop{
+		position: relative;
+		
+	}
+
+	.products-drop.open ~ p a{
+		transition: all 0.3s ease !important;
+		color: var(--theme) !important;
+		font-weight: 600 !important;
+		
+	}
+
+
+	/* PV MOdule Drop */
+
+		.pvModule-drop p a{
+			color: white !important;
+			font-weight: 600 !important;
+		}
+
+		.pvModule-drop p i{
+			border-color: white;
+		}
+
+		.pvModule-menu{
+			display: none;
+		}
+
+		.pvModule-menu.open{
+			display: block;
+		}
+
+
+				/* Poly Crystaline--- */
+				.polyCrystaline-menu{
+					display: none;
+				}
+
+				.polyCrystaline-menu.open{
+					display: block;
+				}
+
+				/* Mono Perc---------- */
+				.monoPerc-menu{
+					display: none;
+				}
+
+				.monoPerc-menu.open{
+					display: block;
+				}
+
+				/* Bifacial Crystaline--- */
+				.bifacial-menu{
+					display: none;
+				}
+
+				.bifacial-menu.open{
+					display: block;
+				}
+
+				/* DCR -------------------- */
+				.dcr-menu{
+					display: none;
+				}
+
+				.dcr-menu.open{
+					display: block;
+				}
+
+
+	/* Solar Home Lightening System  */
+			
+	.solarHomeLightening-menu{
+		display: none;
+	}
+
+	.solarHomeLightening-menu.open{
+		display: block;
+	}
+
+	.solarHomeLightening-drop p a{
+		color: white !important;
+		font-weight: 600 !important;
+	}
+
+		/* Traffic Signal  */
+
+		.trafficSignal-drop p i{
+			border-color: white;
+		}
+
+		.trafficSignal-menu{
+			display: none;
+		}
+
+		.trafficSignal-menu.open{
+			display: block;
+		}
+
+
+	/* Solutions Drop Down Menu------------------ */
+
+		.solutions-menu{
+			display: none;
+		}
+
+		.solutions-menu.open{
+			display: block;
+		}
+
+
+
+		/* Products Below 20 KW */
+			.productsBelow20Kw-drop p a{
+				color: white !important;
+				font-weight: 600 !important;
+			}
+
+			.productsBelow20Kw-drop p i{
+				border-color: white;
+			}
+
+			.productsBelow20Kw-menu{
+				display: none;
+			}
+
+			.productsBelow20Kw-menu.open{
+				display: block;
+			}
+		/* -------------------- */
+
+		/* Products Above 20 KW */
+			.productsAbove20Kw-drop p a{
+				color: white !important;
+				font-weight: 600 !important;
+			}
+
+			.productsAbove20Kw-drop p i{
+				border-color: white;
+			}
+
+			.productsAbove20Kw-menu{
+				display: none;
+			}
+
+			.productsAbove20Kw-menu.open{
+				display: block;
+			}
+		/* -------------------- */
+
+		/* Operation and Maintainance*/
+			.operationAndMaintainance-drop p a{
+				color: white !important;
+				font-weight: 600 !important;
+			}
+
+			.operationAndMaintainance-drop p i{
+				border-color: white;
+			}
+
+			.operationAndMaintainance-menu{
+				display: none;
+			}
+
+			.operationAndMaintainance-menu.open{
+				display: block;
+			}
+
+
+			/* AMC DROP----*/
+				.amc-drop p a{
+					color: white !important;
+					font-weight: 600 !important;
+				}
+
+				.amc-drop p i{
+					border-color: white;
+				}
+
+				.amc-menu{
+					display: none;
+				}
+
+				.amc-menu.open{
+					display: block;
+				}
+			/* -------------------- */
+		/* -------------------- */
+
+	/* ----------------------------------------- */
+
+
+	/* Downloads -------------------------------- */
+
+	.downloads-menu{
+		display: none;
+	}
+
+	.downloads-menu.open{
+		display: block;
+	}
+
+	/* ------------------------------------------- */
+
+
+	/* Achievements Drop -------------------------------- */
+
+	.achievements-menu{
+		display: none;
+	}
+
+	.achievements-menu.open{
+		display: block;
+	}
+
+	/* ------------------------------------------- */
+
+/* -------------------------------------------------------------------------------------------- */
+	
+
+
+
+
+}
+
+
+@media screen and (max-width : 768px) {
+	
+	#navbar{
+		width: 100%;
+		height: 100px;
+		/* background-color: black; */
+		justify-content: space-between;
+		overflow: hidden;
+
+	}
+
+	#logo{
+		height: 100%;
+		width: 70%;
+		/* justify-content: flex-start; */
+	}
+
+	#logo a{
+		display: flex;
+		justify-content: center;
+	}
+
+	#logoImg{
+		width: 200px;
+	}
+
+	#logoText{
+		font-size: 25px;
+		line-height: 35px;
+	}
+
+	#menu{
+		display: none;
+	}
+
+
+	/* DropDown */
+	.dropdown-menu{
+		transform: translateY(-800vh);
+		transition: all 0.3s ease;
+		position: fixed;
+		top: 0px;
+		left: 0;
+		/* right: 0; */
+		display: block;
+		background-color: var(--greyBackground);
+		width: 100%;
+		z-index: 9;
+		overflow-y: scroll;
+		font-size: 25px;
+		text-align: center;
+		height: calc(100vh);
+		padding-top: 200px;
+	}
+
+}
+
+@media screen and (max-height : 540px) and (orientation : landscape){
+	
+	#navbar,.dropdown-menu, .showcase, #container, .missionAndVisionContainer, .bis, .rooftopSec, .whyWe, .testimonials, .feedback, .clients, .footer{
+		display: none;
+	}
+
+	.msg{
+		display: block;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: inherit;
+		height: 100vh;
+		overflow-x: hidden;
+		background-color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.msg img{
+		animation : rotate 1.2s infinite
+	}
+
+	@keyframes rotate {
+		0%{
+			transform: rotate(0deg);
+		}
+		100%{
+			transform: rotate(90deg);
+		}
+		
+	}
+
+}
+
+
+@media only screen and (max-width : 540px) {
+
+	#navbar{
+		width: 100%;
+		height: 70px;
+		/* background-color: black; */
+		justify-content: space-between;
+		overflow: hidden;
+	}
+
+	#logo{
+		/* background-color: black; */
+		width: 70%;
+		padding: 0;
+		margin: 0;
+	}
+
+	#logoImg{
+		width: 40%;
+		/* background-color: white; */
+		justify-content: flex-start;
+		height: 100%;
+	}
+
+	#logoText{
+		width: 100%;
+		font-size: 15px;
+		line-height: 20px;
+		height: 100%;
+	}
+
+
+	.hamburger{
+		width: 35px;
+		height: 30px;
+		margin-right: 20px;
+	}
+
+	.hamburger-line{
+		width: 35px;
+		height: 5px;
+	}
+
+	.hamburger-line:after, .hamburger-line:before{
+		width: 35px;
+		height: 5px;
+	}
+
+	.hamburger-line:after{
+		transform: translateY(10px);
+	}
+
+	.hamburger-line:before{
+		transform: translateY(-10px);
+	}
+
+	/* DropDown */
+	/* DropDown */
+	.dropdown-menu{
+		transform: translateY(-800vh);
+		transition: all 0.3s ease;
+		position: fixed;
+		top: 0px;
+		left: 0;
+		/* right: 0; */
+		display: block;
+		background-color: var(--greyBackground);
+		width: 100%;
+		z-index: 9;
+		overflow-y: scroll;
+		font-size: 15px;
+		text-align: center;
+		height: calc(100vh);
+		padding-top: 120px;
+	}
+
+	.arrow{
+		width: 8px;
+		height: 8px;
+		border-width: 0 2px 2px 0;
+	}
+
+}
+
+
+@media screen and (max-width : 375px) {
+
+	#logoImg{
+		width: 45%;
+		/* background-color: white; */
+		justify-content: flex-start;
+		height: 100%;
+	}
+
+	#logoText{
+		font-size: 13px;
+	}
+
+	.arrow{
+		border-width: 0 2px 2px 0;
+		width: 8px;
+		height: 8px;
+	}
+
+}
+
+
+@media screen  and (max-width : 360px) {
+
+	#logoImg{
+		width: 40%;
+		/* background-color: white; */
+		justify-content: flex-start;
+		height: 100%;
+	}
+
+	#logoText{
+		font-size: 12px;
+	}
+}
+
+@media screen and (max-width : 320px) {
+
+
+	.indicator{
+		width: 20px;
+		height: 20px;
+	}
+
+	#logo{
+		width: 80%;
+	}
+
+	#logoImg{
+		width: 45%;
+		/* background-color: white; */
+		justify-content: flex-start;
+		height: 100%;
+	}
+
+	#logoText{
+		font-size: 12px;
+	}
+
+	.hamburger{
+		width: 30px;
+		height: 30px;
+		margin-right: 15px;
+	}
+
+	.hamburger-line{
+		width: 30px;
+		height: 4px;
+	}
+
+	.hamburger-line:after, .hamburger-line:before{
+		width: 30px;
+		height: 4px;
+	}
+
+	.hamburger-line:after{
+		transform: translateY(8px);
+	}
+
+	.hamburger-line:before{
+		transform: translateY(-8px);
+	}
+
+	/* DropDown */
+	.dropdown-menu{
+		transform: translateY(-800vh);
+		transition: all 0.3s ease;
+		position: fixed;
+		top: 0px;
+		left: 0;
+		/* right: 0; */
+		display: block;
+		background-color: var(--greyBackground);
+		width: 100%;
+		z-index: 9;
+		overflow-y: scroll;
+		font-size: 14px;
+		text-align: center;
+		height: calc(100vh);
+		padding-top: 120px;
+	}
+
+	.arrow{
+		border-width: 0 2px 2px 0;
+		width: 8px;
+		height: 8px;
+	}
+}
+
+/* ------------------------------------- */
