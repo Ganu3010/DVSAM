@@ -110,8 +110,8 @@ header{
 
 #logoText{
 	margin-left: 23px;
-	width: 80%;
-	text-align: center;
+	width: auto;
+	
 	/* margin-left: 20px; */
 	/* background-color:yellow; */
 	font-size: 18px;
