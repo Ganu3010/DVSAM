@@ -1,12 +1,6 @@
 import numpy as np
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity  
-def standardize(row):
-    if(row.max()-row.min() != 0):
-        new_row = (row - row.mean())/(row.max() - row.min())
-    else:
-        new_row = row
-    return new_row
 
 
 class Predicting:
@@ -16,7 +10,7 @@ class Predicting:
         self.combine = self.combine[['user_id', 'rest_name', 'rating']]
         self.pivot = self.combine.pivot_table(index=['user_id'], columns=['rest_name'], values=['rating'])
         self.pivot = self.pivot.fillna(0)
-        self.pt_stand = self.pivot.apply(standardize)
+        self.pt_stand = self.pivot.apply(self.standardize)
         self.item_sim = cosine_similarity(self.pt_stand.T)
         self.item_sim = pd.DataFrame(self.item_sim, index=self.pt_stand.columns, columns=self.pt_stand.columns)
 
@@ -37,6 +31,13 @@ class Predicting:
             if not i in user_dict:
                 r[i] = sim_rest[i]
         return r
+    def standardize(row):
+        if(row.max()-row.min() != 0):
+            new_row = (row - row.mean())/(row.max() - row.min())
+        else:
+            new_row = row
+        return new_row
+
     
         
 
