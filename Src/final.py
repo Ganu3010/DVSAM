@@ -1,3 +1,4 @@
+from doctest import OutputChecker
 import numpy as np
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity  
@@ -5,8 +6,9 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 class Predicting:
     def __init__(self):
-        
-        self.combine = pd.read_csv('G:/Projects/DVSAM/Src/combined.csv')
+        self.df = pd.read_csv('searchable.csv')
+        self.df = self.df.fillna(0)
+        self.combine = pd.read_csv('combined.csv')
         self.combine = self.combine[['user_id', 'rest_name', 'rating']]
         self.pivot = self.combine.pivot_table(index=['user_id'], columns=['rest_name'], values='rating')
         self.pivot = self.pivot.fillna(0)
@@ -30,26 +32,15 @@ class Predicting:
         for i in sim_rest:
             if not i in user_dict:
                 r[i] = sim_rest[i]
-        return r
+        return self.search(r)
+    def search(self, user1):
+        output = pd.DataFrame(columns=self.df.columns)
+        for i in user1.keys():
+            output = output.append(self.df[self.df['Restaurant_Name'] == i])
+        return output
     def standardize(self, row):
         if(row.max()-row.min() != 0):
             new_row = (row - row.mean())/(row.max() - row.min())
         else:
             new_row = row
         return new_row
-
-    
-        
-
-x = Predicting()
-
-user1 = {}
-# user1['Southern Spice'] = 3
-# user1['Cafe Little Eggs'] = 4
-# user1['BACKSTAGE'] = 3
-user1[x.combine['rest_name'][3]] = 3
-user1[x.combine['rest_name'][3]] = 4
-t = x.get_restaurant(user1)
-
-for i in t:
-    print(t[i])
