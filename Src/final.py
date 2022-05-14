@@ -1,4 +1,3 @@
-from doctest import OutputChecker
 import numpy as np
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity  
@@ -18,7 +17,7 @@ class Predicting:
 
     def get_sim(self, rest, rating, mean):
         sim_score = self.item_sim[rest]*(rating)
-        sim_score = sim_score.sort_values(ascending = False).head(10)
+        sim_score = sim_score.sort_values(ascending = False).head(11)
         return sim_score
     def get_restaurant(self, user_dict):
         sim_rest = pd.DataFrame()
