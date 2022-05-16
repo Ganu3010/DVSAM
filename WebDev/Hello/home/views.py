@@ -2,14 +2,14 @@ import string
 from django.shortcuts import render, HttpResponse,redirect
 from datetime import datetime
 from home.models import Contact
-
+import pandas as pd
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
-
-
+from . import search as sr
+import json
 
 # Create your views here.
 def index(request):
@@ -103,8 +103,18 @@ def handleSignUp(request):
         return HttpResponse("404 - Not found")
 
 
-
-
+def search(request):
+    if request.method == 'POST':
+        x = sr.Search()
+        search_var = request.POST.get('search')
+        df = x.search(search_var=search_var)
+        json_record = df.reset_index().to_json(orient='records')
+        arr = []
+        arr = json.loads(json_record)
+        context = {'d': arr}
+        return render(request, 'filter.html', context=context)
+    messages.error('Empty Search Field!')
+    return redirect('home')
 
 
 

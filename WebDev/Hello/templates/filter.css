@@ -1,0 +1,46 @@
+body{
+    margin:0px;
+    padding:0px;
+    background-image: linear-gradient(to right,#393aa2,#12203a);
+    font-family: 'Poppins',sans-serif;
+}
+.filter-page{
+    display:inline-block;
+    
+}
+#heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    margin-left: 23vh;
+}
+.filter{
+    background-color: #f5f5f5;
+    width: 66vh;
+    height: 96vh;
+    margin-left: 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 12px;
+    margin-top:12px;
+}
+
+.left{
+    margin-top: -85vh;
+    
+    
+}
+
+.add-filter{
+    padding:23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   margin-left:-3vh;
+}
+
+

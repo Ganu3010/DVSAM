@@ -36,10 +36,16 @@
       </li>
     
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <div>
+      <form class="form-inline my-2 my-lg-0", method="POST", action="/search">
+      
+        <input class="form-control mr-sm-2" type="search" id="search" name="search" placeholder="Search" aria-label="Search">
+        <label for="search"></label>
+        {% csrf_token %}
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      
+      </form>
+    </div>
    
     {% if user.is_authenticated %}
     <ul class="navbar-nav mr-2">
@@ -47,7 +53,7 @@
     <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/logout">Logout</a>
-
+              <a class="dropdown-item">Recent restaurants</a>
             </div>
           </li>
           </ul>
