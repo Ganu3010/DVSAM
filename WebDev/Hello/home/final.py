@@ -5,9 +5,9 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 class Predicting:
     def __init__(self):
-        self.df = pd.read_csv('searchable.csv')
+        self.df = pd.read_csv('home/searchable.csv')
         self.df = self.df.fillna(0)
-        self.combine = pd.read_csv('combined.csv')
+        self.combine = pd.read_csv('home/combined.csv')
         self.combine = self.combine[['user_id', 'rest_name', 'rating']]
         self.pivot = self.combine.pivot_table(index=['user_id'], columns=['rest_name'], values='rating')
         self.pivot = self.pivot.fillna(0)

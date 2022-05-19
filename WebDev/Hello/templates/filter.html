@@ -1,82 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'base.html' %}
+
+{% block title %}Search Page{% endblock title %}
+
+{% block body %}
+
     
-    <title>Filter</title>
-    <link rel="stylesheet" href="filter.css">
-
-</head>
-<body>
-    <section class="filter">
-        <div class="filter-page">
-        
-        <div class="form">
-        <form action="">
-            <h2 id="heading">Add your filters</h2>
-            <div class="add-filter">
-            
-            <input type="checkbox" id="drink1" name="drink1">
-            <label for="drink1">Wine and beer</label>
-            
-            </div>
-
-            <div class="add-filter">
-                <input type="checkbox" id="dance" name="dance">
-            <label for="dance">Dance Floor</label><br>
-            </div>
-
-            <div class="add-filter">
-                <input type="checkbox" id="veg" name="veg">
-            <label for="veg">Veg Only</label><br>
-            </div>
-
-            <div class="add-filter">
-                <input type="checkbox" id="pet" name="pet">
-            <label for="pet">Pet Friendly</label><br>
-            </div>
-            
-            <div class="add-filter">
-                <input type="checkbox" id="music" name="music">
-            <label for="music">Live Music</label><br>
-            </div>
-
-            <div class="add-filter">
-                <input type="checkbox" id="parking" name="parking">
-            <label for="parking">Valet Parking</label><br>
-            </div>
-
-            <div class="add-filter">
-                <input type="checkbox" id="buffet" name="buffet">
-            <label for="buffet">Buffet</label><br>
-            </div>
-
-            <div class="add-filter">
-                <input type="checkbox" id="vegan" name="vegan">
-            <label for="vegan">Vegan Options</label><br>
-            </div>
-
-            <div class="add-filter">
-                <input type="checkbox" id="Rooftop" name="Rooftop">
-            <label for="Rooftop">Rooftop</label><br>
-            </div>
-
-            <div class="add-filter">
-                <input type="checkbox" id="sugar" name="sugar">
-            <label for="sugar">Sugar free options</label><br>
-            </div>
-
-            <div class="add-filter">
-                <input type="checkbox" id="takeaway" name="takeaway">
-            <label for="takeaway">Takeaway</label><br>
-            </div>
-
-
-        </form>
-        
-    </div>
 
     <div class="container" style="overflow-x:auto;">
         <table class="table table-striped">
@@ -88,6 +16,7 @@
                     <th>Rating out of 5</th>
                     <th>Cuisine</th>
                     <th>Charges for two</th>
+                    <th>Rate us</th>
                 </tr>
             </thead>
             <tbody>
@@ -95,11 +24,31 @@
                 {% for i in d %}
                 <tr>
                     <td>{{i.Restaurant_Name}}</td>
-                    <td>{{i.Web_Link}}</td>
+                    <td><a href={{i.Web_Link}} target="_blank">Website Link</a></td>
                     <td>{{i.Locality}}</td>
                     <td>{{i.Ratings_out_of_5}}</td>
                     <td>{{i.Cuisines}}</td>
                     <td>{{i.Charges_for_two}}</td>
+                    <td><form action="/search", method="post">
+                          {% csrf_token %}
+                          <input type="radio" id="1star" name="rating" value='{{i.Restaurant_Name}}:1'>
+                          <label for="1star">*</label>
+                          <br>
+                          <input type="radio" id="2star" name="rating" value='{{i.Restaurant_Name}}:2'>
+                          <label for="2star">**</label>
+                          <br>
+                          <input type="radio" id="3star" name="rating" value='{{i.Restaurant_Name}}:3'>
+                          <label for="3star">***</label>
+                          <br>
+                          <input type="radio" id="4star" name="rating" value='{{i.Restaurant_Name}}:4'>
+                          <label for="4star">****</label>
+                          <br>
+                          <input type="radio" id="5star" name="rating" value='{{i.Restaurant_Name}}:5'>
+                          <label for="5star">*****</label>
+                          <br>
+                          <button type="submit">Submit Rating</button>
+                        </form> 
+                    </td>
                 </tr>
                 {% endfor %}
                 {% endif %}    
@@ -110,5 +59,4 @@
     </div>
 </section>
     
-</body>
-</html>
+{% endblock body%}

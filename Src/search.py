@@ -8,6 +8,6 @@ class Search:
         for i in self.df.columns:
             for j in range(12188):
                 for sv in search_var:
-                    if self.df[i][j] == sv:
+                    if sv in self.df[j][i]:
                         output = output.append(self.df.loc[j])
         return output.drop_duplicates(subset = None, keep = 'first')

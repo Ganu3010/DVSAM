@@ -1,3 +1,4 @@
+from tkinter.tix import Tree
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -6,15 +7,15 @@ from django.contrib.auth.models import AbstractUser
 
 
 class UserData(AbstractUser):
-    res1 = models.CharField(max_length=20)
-    rate1 = models.IntegerField(blank=True, null=True)
-    res2 = models.CharField(max_length=20)
-    rate2 = models.IntegerField(blank=True, null=True)
-    res3 = models.CharField(max_length=20)
-    rate3 = models.IntegerField(blank=True, null=True)
-    res4 = models.CharField(max_length=20)
-    rate4 = models.IntegerField(blank=True, null=True)
-    res5 = models.CharField(max_length=20)
-    rate5 = models.IntegerField(blank=True, null=True)
-    i = models.IntegerField(blank=True, null=True)
+    res1 = models.CharField(max_length=20, blank=True)
+    rate1 = models.IntegerField(default=-1)
+    res2 = models.CharField(max_length=20, blank=True)
+    rate2 = models.IntegerField(default=-1)
+    res3 = models.CharField(max_length=20, blank=True)
+    rate3 = models.IntegerField(default=-1)
+    res4 = models.CharField(max_length=20, blank=True)
+    rate4 = models.IntegerField(default=-1)
+    res5 = models.CharField(max_length=20, blank=True)
+    rate5 = models.IntegerField(default=-1)
+    i = models.IntegerField(default=0)
    

@@ -1,4 +1,3 @@
-import string
 from django.shortcuts import render, HttpResponse,redirect
 from datetime import datetime
 from home.models import Contact
@@ -10,14 +9,12 @@ from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from . import search as sr
 import json
+from . import final 
 
 # Create your views here.
 def index(request):
-    context = {
-       
-    } 
+    context = {}
     return render(request, 'index.html', context)
-    # return HttpResponse("this is homepage")
 
 def about(request):
     return render(request, 'about.html') 
@@ -105,17 +102,40 @@ def handleSignUp(request):
 
 def search(request):
     if request.method == 'POST':
-        x = sr.Search()
-        search_var = request.POST.get('search')
-        df = x.search(search_var=search_var)
-        json_record = df.reset_index().to_json(orient='records')
-        arr = []
-        arr = json.loads(json_record)
-        context = {'d': arr}
+        if request.POST.get('search') is not None:
+            x = sr.Search()
+            search_var = request.POST.get('search')
+            df = x.search(search_var=search_var)
+            json_record = df.reset_index().to_json(orient='records')
+            arr = []
+            arr = json.loads(json_record)
+            context = {'d': arr}
+            
+        if request.POST.get('rating') is not None:
+            if not request.user.is_authenticated:
+                messages.warning(request, 'Log in to rate restaurants!')
+                return redirect('loginpage')
+            context = add(request, request.POST.get('rating'))
+            rest = request.POST.get('rating').split(':')[0]
+            mes = rest + " added! Recommendations Generated!"
+            messages.success(request, message=mes)
         return render(request, 'filter.html', context=context)
-    messages.error('Empty Search Field!')
     return redirect('home')
 
+
+def add(request, rate):
+    rest, rat = rate.split(':')
+    rat = int(rat)
+    r = {}
+    r[rest] = rat
+    x = final.Predicting()
+    df = x.get_restaurant(r)
+    json_record = df.reset_index().to_json(orient='records')
+    arr = []
+    arr = json.loads(json_record)
+    context = {'d': arr}
+    return context
+    
 
 
    
